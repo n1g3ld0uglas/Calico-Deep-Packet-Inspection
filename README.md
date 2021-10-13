@@ -31,21 +31,23 @@ spec:
 ```
 
 You can disable DPI at any time, selectively configure for namespaces and endpoints, and alerts are generated in the Alerts dashboard in Manager UI. <br/>
-<br/>
-Check that the "tigera-dpi" pods created successfully, it's a deaemonSet so one pod should created in each node:
+
+### Check that the "tigera-dpi" pods created successfully
+It's a deaemonSet so one pod should created in each node:
 
 ```
 kubectl get pods -n tigera-dpi
 ```
 
-Make sure that all pods are in running state <br/>
+### Make sure that all pods are in running state
 Trigger Snort rule from attacker pod to backend.storefront
 
 ```
 kubectl exec -it $(kubectl get po -l app=attacker-app -ojsonpath='{.items[0].metadata.name}') -- sh -c "curl http://backend.storefront.svc.cluster.local:80 -H 'User-Agent: Mozilla/4.0' -XPOST --data-raw 'smk=1234'"
 ```
 
-Now, go and check the Alerts page in the UI and you should see a signature triggered alert. <br/>
+### Now, go and check the Alerts page in the UI
+You should see a signature triggered alert. <br/>
 Once satisfied with the alerts, you can disable Deep Packet Inspection via the below command:
 ```
 kubectl delete DeepPacketInspection dpi-backend -n storefront 
