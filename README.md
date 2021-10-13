@@ -50,6 +50,6 @@ kubectl exec -it $(kubectl get po -l app=attacker-app -ojsonpath='{.items[0].met
 You should see a signature triggered alert. <br/>
 Once satisfied with the alerts, you can disable Deep Packet Inspection via the below command:
 ```
-kubectl delete DeepPacketInspection dpi-backend -n storefront 
+kubectl delete DeepPacketInspection database -n storefront 
 ```
 
