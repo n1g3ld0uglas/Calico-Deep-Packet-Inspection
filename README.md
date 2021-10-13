@@ -1,2 +1,37 @@
 # Calico-Deep-Packet-Inspection
-Configuring DPI using Calico Enterprise
+Configuring DPI using Calico Enterprise<br/>
+<br/>
+Security teams need to run DPI quickly in response to unusual network traffic in clusters so they can identify potential threats. 
+<br/>
+### Introduce a test application:
+```
+kubectl apply -f https://installer.calicocloud.io/storefront-demo.yaml
+```
+
+Also, it is critical to run DPI on select workloads (not all) to efficiently make use of cluster resources and minimize the impact of false positives.
+<br/>
+### Bring in a Rogue Application
+```
+kubectl apply -f https://installer.calicocloud.io/rogue-demo.yaml
+```
+
+Calico Enterprise provides an easy way to perform DPI using Snort community rules.<br/>
+<br/>
+Create DeepPacketInspection resource, in this example we will enable DPI on backend pod in storefront namespace:
+
+```
+apiVersion: projectcalico.org/v3
+kind: DeepPacketInspection
+metadata:
+  name: database
+  namespace: storefront
+spec:
+  selector: app == "backend"
+```
+
+You can disable DPI at any time, selectively configure for namespaces and endpoints, and alerts are generated in the Alerts dashboard in Manager UI. <br/>
+<br/>
+check that the "tigera-dpi" pods created successfully, it's a deaemonSet so one pod should created in each node:
+
+
+
