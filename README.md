@@ -1,15 +1,15 @@
-# Calico-Deep-Packet-Inspection
+# Calico Deep PacketInspection
 Configuring DPI using Calico Enterprise<br/>
 <br/>
 Security teams need to run DPI quickly in response to unusual network traffic in clusters so they can identify potential threats. 
-<br/>
+
 ### Introduce a test application:
 ```
 kubectl apply -f https://installer.calicocloud.io/storefront-demo.yaml
 ```
 
 Also, it is critical to run DPI on select workloads (not all) to efficiently make use of cluster resources and minimize the impact of false positives.
-<br/>
+
 ### Bring in a Rogue Application
 ```
 kubectl apply -f https://installer.calicocloud.io/rogue-demo.yaml
