@@ -16,8 +16,9 @@ kubectl apply -f https://installer.calicocloud.io/rogue-demo.yaml
 ```
 
 Calico Enterprise provides an easy way to perform DPI using Snort community rules.<br/>
-<br/>
-Create DeepPacketInspection resource, in this example we will enable DPI on backend pod in storefront namespace:
+
+### Create DeepPacketInspection resource: 
+In this example we will enable DPI on backend pod in storefront namespace:
 
 ```
 apiVersion: projectcalico.org/v3
