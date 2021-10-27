@@ -53,3 +53,13 @@ Once satisfied with the alerts, you can disable Deep Packet Inspection via the b
 kubectl delete DeepPacketInspection database -n storefront 
 ```
 
+### Hipstershop Reference
+```
+apiVersion: projectcalico.org/v3
+kind: DeepPacketInspection
+metadata:
+  name: hipstershop-dpi-dmz
+  namespace: hipstershop
+spec:
+  selector: zone == "dmz"
+```
