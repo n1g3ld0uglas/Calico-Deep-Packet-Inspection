@@ -63,3 +63,7 @@ metadata:
 spec:
   selector: zone == "dmz"
 ```
+
+### Bug hunting:
+Apparently Snort rule set changed in v3.11.2 release and it no longer has the rule active that we used to demo DPI. Here’s a new command that matches another signature.
+kubectl -n uat exec -t netshoot -- sh -c "curl http://nginx-svc/secid_canceltoken.cgi -H 'X-CMD: Test' -H 'X-KEY: Test' -XPOST"
